@@ -153,8 +153,12 @@ export default function GroceryList() {
 
     return (
         <ThemedView style={styles.container}>
-            <ThemedText type="title" style={styles.title}>Grocery List</ThemedText>
-
+            {/* Add top padding to avoid status bar */}
+            <View style={styles.spacer} />
+            
+            {/* Title at the top for visibility */}
+            <ThemedText type="title" style={styles.headerTitle}>Grocery List</ThemedText>
+            
             <View style={styles.inputContainer}>
                 <TextInput
                     ref={(ref) => setInputRef(ref)}
@@ -176,7 +180,7 @@ export default function GroceryList() {
                     <Text style={styles.buttonText}>Add</Text>
                 </TouchableOpacity>
             </View>
-
+            
             {/* List area can be tapped to dismiss keyboard */}
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.listContainer}>
@@ -201,6 +205,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
+    },
+    spacer: {
+        height: 40, // Add safe area at the top for status bar
     },
     title: {
         marginBottom: 20,
@@ -281,5 +288,21 @@ const styles = StyleSheet.create({
         marginTop: 40,
         fontSize: 16,
         color: '#888',
+    },
+    bottomTitle: {
+        marginTop: 20,
+        marginBottom: 10,
+        textAlign: 'center',
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#2089dc', // A nice blue color that should stand out
+    },
+    headerTitle: {
+        marginTop: 10,
+        marginBottom: 15,
+        textAlign: 'center',
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#2089dc', // A nice blue color that should stand out
     },
 });
